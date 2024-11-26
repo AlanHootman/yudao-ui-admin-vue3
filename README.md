@@ -54,27 +54,26 @@
 
 推荐 VS Code 开发，配合插件如下：
 
-| 插件名                           | 功能                       |
-|-------------------------------|--------------------------|
-| TypeScript Vue Plugin (Volar) | 用于 TypeScript 的 Vue 插件  |
-| Vue Language Features (Volar) | Vue3.0 语法支持              |
-| unocss                        | unocss for vscode           |
-| Iconify IntelliSense          | Iconify 预览和搜索           |
-| i18n Ally                     | 国际化智能提示               |
-| Stylelint                     | Css    格式化               |
-| Prettier                      | 代码格式化                   |
-| ESLint                        | 脚本代码检查                  |
-| DotENV                        | env 文件高亮                 |
+| 插件名                           | 功能                  |
+|-------------------------------|---------------------|
+| Vue - Official                | Vue 与 TypeScript 支持 |
+| unocss                        | unocss for vscode   |
+| Iconify IntelliSense          | Iconify 预览和搜索       |
+| i18n Ally                     | 国际化智能提示             |
+| Stylelint                     | Css    格式化          |
+| Prettier                      | 代码格式化               |
+| ESLint                        | 脚本代码检查              |
+| DotENV                        | env 文件高亮            |
 
 ## 🔥 后端架构
 
 支持 Spring Boot、Spring Cloud 两种架构：
 
-① Spring Boot 单体架构：<https://github.com/YunaiV/ruoyi-vue-pro>
+① Spring Boot 单体架构：<https://doc.iocoder.cn>
 
 ![架构图](/.image/common/ruoyi-vue-pro-architecture.png)
 
-② Spring Cloud 微服务架构：<https://github.com/YunaiV/yudao-cloud>
+② Spring Cloud 微服务架构：<https://cloud.iocoder.cn>
 
 ![架构图](/.image/common/yudao-cloud-architecture.png)
 
@@ -121,17 +120,21 @@
 
 ### 工作流程
 
-|     | 功能    | 描述                                     |
-|-----|-------|----------------------------------------|
-| 🚀  | 流程模型  | 配置工作流的流程模型，支持文件导入与在线设计流程图，提供 7 种任务分配规则 |
-| 🚀  | 流程表单  | 拖动表单元素生成相应的工作流表单，覆盖 Element UI 所有的表单组件 |
-| 🚀  | 用户分组  | 自定义用户分组，可用于工作流的审批分组                    |
-| 🚀  | 我的流程  | 查看我发起的工作流程，支持新建、取消流程等操作，高亮流程图、审批时间线    |
-| 🚀  | 待办任务  | 查看自己【未】审批的工作任务，支持通过、不通过、转发、委派、退回等操作    |
-| 🚀  | 已办任务  | 查看自己【已】审批的工作任务，未来会支持回退操作               |
-| 🚀  | OA 请假 | 作为业务自定义接入工作流的使用示例，只需创建请求对应的工作流程，即可进行审批 |
+|    | 功能    | 描述                                      |
+|----|-------|-----------------------------------------|
+| 🚀 | 流程模型  | 配置工作流的流程模型，支持 BPMN 和仿钉钉/飞书设计器           |
+| 🚀 | 流程表单  | 拖动表单元素生成相应的工作流表单，覆盖 Element UI 所有的表单组件  |
+| 🚀 | 用户分组  | 自定义用户分组，可用于工作流的审批分组                     |
+| 🚀 | 我的流程  | 查看我发起的工作流程，支持新建、取消流程等操作，高亮流程图、审批时间线     |
+| 🚀 | 待办任务  | 查看自己【未】审批的工作任务，支持通过、不通过、转派、委派、退回、加减签等操作 |
+| 🚀 | 已办任务  | 查看自己【已】审批的工作任务，支持流程预测，展示未来审批人信息         |
+| 🚀 | OA 请假 | 作为业务自定义接入工作流的使用示例，只需创建请求对应的工作流程，即可进行审批  |
 
 ![功能图](/.image/common/bpm-feature.png)
+
+| BPMN 设计器                     | 钉钉/飞书设计器                       |
+|------------------------------|--------------------------------|
+| ![](/.image/工作流设计器-bpmn.jpg) | ![](/.image/工作流设计器-simple.jpg) |
 
 ### 支付系统
 
@@ -192,25 +195,23 @@ ps：核心功能已经实现，正在对接微信小程序中...
 
 ### 商城系统
 
+演示地址：<https://doc.iocoder.cn/mall-preview/>
+
 ![功能图](/.image/common/mall-feature.png)
 
 ![功能图](/.image/common/mall-preview.png)
 
-_前端基于 crmeb uniapp 经过授权重构，优化代码实现，接入芋道快速开发平台_
-
-演示地址：<https://doc.iocoder.cn/mall-preview/>
-
 ### ERP 系统
-
-![功能图](/.image/common/erp-feature.png)
 
 演示地址：<https://doc.iocoder.cn/erp-preview/>
 
+![功能图](/.image/common/erp-feature.png)
+
 ### CRM 系统
 
-![功能图](/.image/common/crm-feature.png)
-
 演示地址：<https://doc.iocoder.cn/crm-preview/>
+
+![功能图](/.image/common/crm-feature.png)
 
 ## 🐷 演示图
 

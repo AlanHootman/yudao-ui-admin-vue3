@@ -267,9 +267,9 @@ const remainingRouter: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'manager/simple/workflow/model/edit',
-        component: () => import('@/views/bpm/simpleWorkflow/index.vue'),
-        name: 'SimpleWorkflowDesignEditor',
+        path: 'manager/simple/model',
+        component: () => import('@/views/bpm/simple/SimpleModelDesign.vue'),
+        name: 'SimpleModelDesign',
         meta: {
           noCache: true,
           hidden: true,
@@ -300,7 +300,12 @@ const remainingRouter: AppRouteRecordRaw[] = [
           canTo: true,
           title: '流程详情',
           activeMenu: '/bpm/task/my'
-        }
+        },
+        props: (route) => ({
+          id: route.query.id,
+          taskId: route.query.taskId,
+          activityId: route.query.activityId
+        })
       },
       {
         path: 'oa/leave/create',
@@ -341,7 +346,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/mall/product/spu/form/index.vue'),
         name: 'ProductSpuAdd',
         meta: {
-          noCache: true,
+          noCache: false, // 需要缓存
           hidden: true,
           canTo: true,
           icon: 'ep:edit',
@@ -571,6 +576,68 @@ const remainingRouter: AppRouteRecordRaw[] = [
           activeMenu: '/crm/product'
         },
         component: () => import('@/views/crm/product/detail/index.vue')
+      }
+    ]
+  },
+  {
+    path: '/ai',
+    component: Layout,
+    name: 'Ai',
+    meta: {
+      hidden: true
+    },
+    children: [
+      {
+        path: 'image/square',
+        component: () => import('@/views/ai/image/square/index.vue'),
+        name: 'AiImageSquare',
+        meta: {
+          title: '绘图作品',
+          icon: 'ep:home-filled',
+          noCache: false
+        }
+      }
+    ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/Error/404.vue'),
+    name: '',
+    meta: {
+      title: '404',
+      hidden: true,
+      breadcrumb: false
+    }
+  },
+  {
+    path: '/iot',
+    component: Layout,
+    name: 'IOT',
+    meta: {
+      hidden: true
+    },
+    children: [
+      {
+        path: 'product/detail/:id',
+        name: 'IoTProductDetail',
+        meta: {
+          title: '产品详情',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/iot/product'
+        },
+        component: () => import('@/views/iot/product/detail/index.vue')
+      },
+      {
+        path: 'device/detail/:id',
+        name: 'IoTDeviceDetail',
+        meta: {
+          title: '设备详情',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/iot/device'
+        },
+        component: () => import('@/views/iot/device/detail/index.vue')
       }
     ]
   }

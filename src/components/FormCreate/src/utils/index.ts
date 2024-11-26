@@ -1,4 +1,3 @@
-// TODO puhui999: 借鉴一下 form-create-designer utils 方法 🤣 (导入不了只能先 copy 过来用下)
 export function makeRequiredRule() {
   return {
     type: 'Required',
@@ -18,62 +17,45 @@ export const localeProps = (t, prefix, rules) => {
   })
 }
 
-export function upper(str) {
-  return str.replace(str[0], str[0].toLocaleUpperCase())
-}
-
-export function makeOptionsRule(t, to, userOptions) {
-  console.log(userOptions[0])
-  const options = [
-    { label: t('props.optionsType.struct'), value: 0 },
-    { label: t('props.optionsType.json'), value: 1 },
-    { label: '用户数据', value: 2 }
-  ]
-
-  const control = [
-    {
-      value: 0,
-      rule: [
-        {
-          type: 'TableOptions',
-          field: 'formCreate' + upper(to).replace('.', '>'),
-          props: { defaultValue: [] }
-        }
-      ]
-    },
-    {
-      value: 1,
-      rule: [
-        {
-          type: 'Struct',
-          field: 'formCreate' + upper(to).replace('.', '>'),
-          props: { defaultValue: [] }
-        }
-      ]
-    },
-    {
-      value: 2,
-      rule: [
-        {
-          type: 'TableOptions',
-          field: 'formCreate' + upper(to).replace('.', '>'),
-          props: { modelValue: [] }
-        }
-      ]
+/**
+ * 解析表单组件的  field, title 等字段（递归，如果组件包含子组件）
+ * 
+ * @param rule  组件的生成规则 https://www.form-create.com/v3/guide/rule
+ * @param fields 解析后表单组件字段
+ * @param parentTitle  如果是子表单，子表单的标题，默认为空
+ */
+export const parseFormFields = (
+  rule: Record<string, any>,
+  fields: Array<Record<string, any>> = [],
+  parentTitle: string = ''
+) => {
+  const { type, field, $required, title: tempTitle, children } = rule
+  if (field && tempTitle) {
+    let title = tempTitle
+    if (parentTitle) {
+      title = `${parentTitle}.${tempTitle}`
     }
-  ]
-  options.splice(0, 0)
-  control.push()
-
-  return {
-    type: 'radio',
-    title: t('props.options'),
-    field: '_optionType',
-    value: 0,
-    options,
-    props: {
-      type: 'button'
-    },
-    control
+    let required = false
+    if ($required) {
+      required = true
+    }
+    fields.push({
+      field,
+      title,
+      type,
+      required
+    })
+    // TODO 子表单 需要处理子表单字段
+    // if (type === 'group' && rule.props?.rule && Array.isArray(rule.props.rule)) {
+    //   // 解析子表单的字段
+    //   rule.props.rule.forEach((item) => {
+    //     parseFields(item, fieldsPermission, title)
+    //   })
+    // }
+  }
+  if (children && Array.isArray(children)) {
+    children.forEach((rule) => {
+      parseFormFields(rule, fields)
+    })
   }
 }

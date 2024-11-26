@@ -13,7 +13,8 @@
       <el-form-item label="操作人" prop="userId">
         <el-select
           v-model="queryParams.userId"
-          multiple
+          clearable
+          filterable
           placeholder="请输入操作人员"
           class="!w-240px"
         >
@@ -34,10 +35,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="操作模块" prop="subType">
+      <el-form-item label="操作名" prop="subType">
         <el-input
           v-model="queryParams.subType"
-          placeholder="请输入操作模块"
+          placeholder="请输入操作名"
           clearable
           @keyup.enter="handleQuery"
           class="!w-240px"
@@ -60,7 +61,7 @@
           start-placeholder="开始日期"
           end-placeholder="结束日期"
           :default-time="[new Date('1 00:00:00'), new Date('1 23:59:59')]"
-          class="!w-220px"
+          class="!w-240px"
         />
       </el-form-item>
       <el-form-item label="业务编号" prop="bizId">
@@ -104,7 +105,7 @@
         :formatter="dateFormatter"
       />
       <el-table-column label="业务编号" align="center" prop="bizId" width="120" />
-      <el-table-column label="IP" align="center" prop="userIp" width="120" />
+      <el-table-column label="操作 IP" align="center" prop="userIp" width="120" />
       <el-table-column label="操作" align="center" fixed="right" width="60">
         <template #default="scope">
           <el-button

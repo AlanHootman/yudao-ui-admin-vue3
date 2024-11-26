@@ -22,7 +22,7 @@ const showDate = ref(true)
 const { getPrefixCls } = useDesign()
 const prefixCls = getPrefixCls('lock-page')
 
-const avatar = computed(() => userStore.user.avatar ?? avatarImg)
+const avatar = computed(() => userStore.user.avatar || avatarImg)
 const userName = computed(() => userStore.user.nickname ?? 'Admin')
 
 const lockStore = useLockStore()
@@ -52,7 +52,7 @@ async function goLogin() {
   // 登出后清理
   deleteUserCache() // 清空用户缓存
   tagsViewStore.delAllViews()
-  resetRouter() // 重置静态路由表
+  // resetRouter() // 重置静态路由表
   lockStore.resetLockInfo()
   replace('/login')
 }

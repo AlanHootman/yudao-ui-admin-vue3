@@ -1,5 +1,4 @@
 import request from '@/config/axios'
-import { getRefreshToken } from '@/utils/auth'
 import type { RegisterVO, UserLoginVO } from './types'
 
 export interface SmsCodeVO {
@@ -72,7 +71,6 @@ export const socialAuthRedirect = (type: number, redirectUri: string) => {
 }
 // 获取验证图片以及 token
 export const getCode = (data: any) => {
-  debugger
   return request.postOriginal({ url: 'system/captcha/get', data })
 }
 
@@ -83,5 +81,5 @@ export const reqCheck = (data: any) => {
 
 // 通过短信重置密码
 export const smsResetPassword = (data: any) => {
-  return request.post({ url: '/system/auth/sms-reset-password', data })
+  return request.post({ url: '/system/auth/reset-password', data })
 }

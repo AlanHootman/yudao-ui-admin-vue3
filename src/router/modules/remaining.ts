@@ -255,32 +255,8 @@ const remainingRouter: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'manager/model/edit',
-        component: () => import('@/views/bpm/model/editor/index.vue'),
-        name: 'BpmModelEditor',
-        meta: {
-          noCache: true,
-          hidden: true,
-          canTo: true,
-          title: '设计流程',
-          activeMenu: '/bpm/manager/model'
-        }
-      },
-      {
-        path: 'manager/simple/model',
-        component: () => import('@/views/bpm/simple/SimpleModelDesign.vue'),
-        name: 'SimpleModelDesign',
-        meta: {
-          noCache: true,
-          hidden: true,
-          canTo: true,
-          title: '仿钉钉设计流程',
-          activeMenu: '/bpm/manager/model'
-        }
-      },
-      {
         path: 'manager/definition',
-        component: () => import('@/views/bpm/definition/index.vue'),
+        component: () => import('@/views/bpm/model/definition/index.vue'),
         name: 'BpmProcessDefinition',
         meta: {
           noCache: true,
@@ -306,6 +282,18 @@ const remainingRouter: AppRouteRecordRaw[] = [
           taskId: route.query.taskId,
           activityId: route.query.activityId
         })
+      },
+      {
+        path: 'process-instance/report',
+        component: () => import('@/views/bpm/processInstance/report/index.vue'),
+        name: 'BpmProcessInstanceReport',
+        meta: {
+          noCache: true,
+          hidden: true,
+          canTo: true,
+          title: '数据报表',
+          activeMenu: '/bpm/manager/model'
+        }
       },
       {
         path: 'oa/leave/create',
@@ -344,7 +332,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'manager/model/update/:id',
+        path: 'manager/model/:type/:id',
         component: () => import('@/views/bpm/model/form/index.vue'),
         name: 'BpmModelUpdate',
         meta: {
@@ -620,6 +608,89 @@ const remainingRouter: AppRouteRecordRaw[] = [
           icon: 'ep:home-filled',
           noCache: false
         }
+      },
+      {
+        path: 'knowledge/document',
+        component: () => import('@/views/ai/knowledge/document/index.vue'),
+        name: 'AiKnowledgeDocument',
+        meta: {
+          title: '知识库文档',
+          icon: 'ep:document',
+          noCache: false,
+          activeMenu: '/ai/knowledge'
+        }
+      },
+      {
+        path: 'knowledge/document/create',
+        component: () => import('@/views/ai/knowledge/document/form/index.vue'),
+        name: 'AiKnowledgeDocumentCreate',
+        meta: {
+          title: '创建文档',
+          icon: 'ep:plus',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/ai/knowledge'
+        }
+      },
+      {
+        path: 'knowledge/document/update',
+        component: () => import('@/views/ai/knowledge/document/form/index.vue'),
+        name: 'AiKnowledgeDocumentUpdate',
+        meta: {
+          title: '修改文档',
+          icon: 'ep:edit',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/ai/knowledge'
+        }
+      },
+      {
+        path: 'knowledge/retrieval',
+        component: () => import('@/views/ai/knowledge/knowledge/retrieval/index.vue'),
+        name: 'AiKnowledgeRetrieval',
+        meta: {
+          title: '文档召回测试',
+          icon: 'ep:search',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/ai/knowledge'
+        }
+      },
+      {
+        path: 'knowledge/segment',
+        component: () => import('@/views/ai/knowledge/segment/index.vue'),
+        name: 'AiKnowledgeSegment',
+        meta: {
+          title: '知识库分段',
+          icon: 'ep:tickets',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/ai/knowledge'
+        }
+      },
+      {
+        path: 'console/workflow/create',
+        component: () => import('@/views/ai/workflow/form/index.vue'),
+        name: 'AiWorkflowCreate',
+        meta: {
+          noCache: true,
+          hidden: true,
+          canTo: true,
+          title: '设计 AI 工作流',
+          activeMenu: '/ai/console/workflow'
+        }
+      },
+      {
+        path: 'console/workflow/:type/:id',
+        component: () => import('@/views/ai/workflow/form/index.vue'),
+        name: 'AiWorkflowUpdate',
+        meta: {
+          noCache: true,
+          hidden: true,
+          canTo: true,
+          title: '设计 AI 工作流',
+          activeMenu: '/ai/console/workflow'
+        }
       }
     ]
   },
@@ -642,15 +713,15 @@ const remainingRouter: AppRouteRecordRaw[] = [
     },
     children: [
       {
-        path: 'product/detail/:id',
+        path: 'product/product/detail/:id',
         name: 'IoTProductDetail',
         meta: {
           title: '产品详情',
           noCache: true,
           hidden: true,
-          activeMenu: '/iot/product'
+          activeMenu: '/iot/device/product'
         },
-        component: () => import('@/views/iot/product/detail/index.vue')
+        component: () => import('@/views/iot/product/product/detail/index.vue')
       },
       {
         path: 'device/detail/:id',
@@ -659,9 +730,20 @@ const remainingRouter: AppRouteRecordRaw[] = [
           title: '设备详情',
           noCache: true,
           hidden: true,
-          activeMenu: '/iot/device'
+          activeMenu: '/iot/device/device'
         },
-        component: () => import('@/views/iot/device/detail/index.vue')
+        component: () => import('@/views/iot/device/device/detail/index.vue')
+      },
+      {
+        path: 'plugin/detail/:id',
+        name: 'IoTPluginDetail',
+        meta: {
+          title: '插件详情',
+          noCache: true,
+          hidden: true,
+          activeMenu: '/iot/plugin'
+        },
+        component: () => import('@/views/iot/plugin/detail/index.vue')
       }
     ]
   }
